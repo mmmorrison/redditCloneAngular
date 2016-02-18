@@ -1,0 +1,11 @@
+.pic{
+  width: 17vw;
+  height: 30vh;
+  margin: 0;
+}
+.test1{
+  border: 1px solid green;
+}
+.test2{
+  border: 1px solid red;
+}
