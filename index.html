@@ -50,25 +50,30 @@
   <div class="container">
     <div class="row">
       <div ng-show="showme">
-        <form ng-submit='Post()' ng-show='showme'>
-          <div class="form-group">
+
+        <!-- FORM -->
+        <form name='postForm' ng-controller='PostController as postCtrl' ng-submit='postForm.$valid && postCtrl.addPost(x)' ng-show='showme' novalidate>
+          <fieldset class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" placeholder="Title">
-          </div>
-          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Title" ng-model='postCtrl.testData.title' required>
+          </fieldset>
+          <fieldset class="form-group">
             <label for="author">Author</label>
-            <input type="text" class="form-control" placeholder="Author">
-          </div>
-          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Author" ng-model='postCtrl.testData.author' required>
+          </fieldset>
+          <fieldset class="form-group">
             <label for="image">Image URL</label>
-            <input type="text" class="form-control" placeholder="Image URL">
-          </div>
-          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Image URL" ng-model='postCtrl.testData.imgUrl' required>
+          </fieldset>
+          <fieldset class="form-group">
             <label for="description">Description</label>
-            <input type="text" class="form-control" placeholder="Description">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+            <input type="text" class="form-control" placeholder="Description" ng-model='postCtrl.testData.description' required>
+          </fieldset>
+          <fieldset class='form-group'>
+          <input type="submit" class="btn btn-default" value="Submit Post"></input>
+          </fieldset>
         </form>
+
       </div> <!--div.showme-->
     </div> <!--div.row-->
 
@@ -84,7 +89,7 @@
               <h3>{{entry.title}} | {{entry.votes}}</h3>
               <p>By {{entry.author}}</p>
               <p>{{entry.description}}</p>
-              <p>{{entry.date | date}} | {{entry.commentsCount}} | <a href="#">Add Comment</a></p>
+              <p>{{entry.createdOn | date}} | {{entry.commentsCount}} | <a href="#">Add Comment</a></p>
             </div>
           </div>
         </div>
