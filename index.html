@@ -52,7 +52,7 @@
       <div ng-show="showme">
 
         <!-- FORM -->
-        <form name='postForm' ng-controller='PostController as postCtrl' ng-submit='postCtrl.addPost(entry)' ng-show='showme' novalidate>
+        <form name='postForm' ng-controller='PostController as postCtrl' ng-submit='postForm.$valid && postCtrl.addPost(entry)' ng-show='showme' novalidate>
           <fieldset class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" placeholder="Title" title="Title" ng-model='postCtrl.newPost.title' required>
@@ -93,11 +93,16 @@
               <h3>{{entry.title}} | {{entry.votes}}</h3>
               <p>By {{entry.author}}</p>
               <p>{{entry.description}}</p>
-              <p>{{entry.createdOn | date}} | {{entry.commentsCount}} | <a href="#">Add Comment</a></p>
+              <p>{{entry.createdOn | date:"MM/dd/yyyy 'at' h:mma"}} | <a ng-click="showmecomments = true">{{entry.commentsCount}} comments </a>| <a href="#">Add Comment</a></p>
+
+                <div ng-show='showmecomments' class="viewcomments">
+                  <p>COMMENTS SECTION HOPEFULLY</p>
+                </div>
             </div>
           </div>
         </div>
       </div>
+
 
     </div>
 

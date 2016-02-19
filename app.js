@@ -1,6 +1,7 @@
 (function(){
   var app = angular.module('clone', []);
 
+
   app.controller('CloneController', function(){
     this.entries = testData;
   });
@@ -16,18 +17,17 @@
   });
 
 
-  // app.controller("UpDownVotes", function($scope) {
-  //   $scope.upVotes = 0;
-  //   $scope.downVotes = 0;
-  //
-  //   $scope.upVote = function() {
-  //     $scope.upVotes++
-  //   }
-  //
-  //   $scope.downVote = function() {
-  //     $scope.downVotes--
-  //   }
-  // });
+  app.controller("UpDownVotes", function() {
+    this.votes = votes
+      console.log(votes);
+    $scope.upVote = function() {
+      $scope.upVotes++
+    }
+
+    $scope.downVote = function() {
+      $scope.downVotes--
+    }
+  });
 
   var testData = [
     {
@@ -36,8 +36,15 @@
     votes: 10,
     author: 'Maria Morrison',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    createdOn: '2/8/2016',
-    commentsCount: 2
+    createdOn: 1455908986000,
+    commentsCount: 1,
+    comments: [
+      {
+        author: 'John Doe',
+        body: 'Lorem ipsum dolor sit amet, consectetur'
+      },
+    ],
+
     },
 
     {
@@ -46,8 +53,19 @@
     votes: 0,
     author: 'Bernie Sanders',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    createdOn: '1/1/2016',
-    commentsCount: 7
-    }
+    createdOn: 1455908986000,
+    commentsCount: 2,
+    comments: [
+      {
+        author: 'Abbie Hoffman',
+        body: 'Lorem ipsum dolor sit amet, consectetur'
+      },
+      {
+        author: 'Buddy Rich',
+        body: 'Lorem ipsum dolor sit amet, consectetur'
+      },
+    ],
+
+    },
   ]
 })();
