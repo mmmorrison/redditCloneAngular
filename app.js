@@ -19,7 +19,6 @@
 
   app.controller("UpDownVotes", function() {
     this.votes = votes
-      console.log(votes);
     $scope.upVote = function() {
       $scope.upVotes++
     }
@@ -40,7 +39,7 @@
     commentsCount: 1,
     comments: [
       {
-        author: 'John Doe',
+        commentAuthor: 'John Doe',
         body: 'Lorem ipsum dolor sit amet, consectetur'
       },
     ],
@@ -57,11 +56,11 @@
     commentsCount: 2,
     comments: [
       {
-        author: 'Abbie Hoffman',
+        commentAuthor: 'Abbie Hoffman',
         body: 'Lorem ipsum dolor sit amet, consectetur'
       },
       {
-        author: 'Buddy Rich',
+        commentAuthor: 'Buddy Rich',
         body: 'Lorem ipsum dolor sit amet, consectetur'
       },
     ],

@@ -96,7 +96,7 @@
               <p>{{entry.createdOn | date:"MM/dd/yyyy 'at' h:mma"}} | <a ng-click="showmecomments = true">{{entry.commentsCount}} comments </a>| <a href="#">Add Comment</a></p>
 
                 <div ng-show='showmecomments' class="viewcomments">
-                  <p>COMMENTS SECTION HOPEFULLY</p>
+                  <p ng-repeat='comment in entry.comments'>{{comment.commentAuthor}} | {{comment.body}}</p>
                 </div>
             </div>
           </div>
