@@ -47,30 +47,34 @@
     <!-- /.container-fluid -->
   </nav>
 
-  <div class="container">
+  <div class="container"  ng-controller='PostController as postCtrl'>
     <div class="row">
       <div ng-show="showme">
 
         <!-- FORM -->
-        <form name='postForm' ng-controller='PostController as postCtrl' ng-submit='postForm.$valid && postCtrl.addPost(x)' ng-show='showme' novalidate>
+        <form name='postForm' ng-controller='PostController as postCtrl' ng-submit='postCtrl.addPost(entry)' ng-show='showme' novalidate>
           <fieldset class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" placeholder="Title" ng-model='postCtrl.testData.title' required>
+            <input type="text" class="form-control" placeholder="Title" title="Title" ng-model='postCtrl.newPost.title' required>
           </fieldset>
+
           <fieldset class="form-group">
             <label for="author">Author</label>
-            <input type="text" class="form-control" placeholder="Author" ng-model='postCtrl.testData.author' required>
+            <input type="text" class="form-control" placeholder="Author" title="Author" ng-model='postCtrl.newPost.author' required>
           </fieldset>
+
           <fieldset class="form-group">
             <label for="image">Image URL</label>
-            <input type="text" class="form-control" placeholder="Image URL" ng-model='postCtrl.testData.imgUrl' required>
+            <input type="text" class="form-control" placeholder="Image URL" title="ImgUrl" ng-model='postCtrl.newPost.imgUrl' required>
           </fieldset>
+
           <fieldset class="form-group">
             <label for="description">Description</label>
-            <input type="text" class="form-control" placeholder="Description" ng-model='postCtrl.testData.description' required>
+            <input type="text" class="form-control" placeholder="Description" title="Description" ng-model='postCtrl.newPost.description' required>
           </fieldset>
+
           <fieldset class='form-group'>
-          <input type="submit" class="btn btn-default" value="Submit Post"></input>
+          <input type="submit" class="btn btn-primary" value="Submit Post">
           </fieldset>
         </form>
 
@@ -83,7 +87,7 @@
         <div class="row">
           <div class="jumbotron container-fluid" ng-repeat='entry in clone.entries'>
             <div class="col-md-3 pic">
-              <img class="pic" src="{{entry.imgUrl}}">
+              <img class="pic" ng-src="{{entry.imgUrl}}">
             </div>
             <div class="col-md-9">
               <h3>{{entry.title}} | {{entry.votes}}</h3>
