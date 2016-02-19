@@ -29,7 +29,7 @@
         </ul>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" ng-model='searchable'>
           </div>
         </form>
         <ul class="nav navbar-nav">
@@ -74,7 +74,7 @@
           </fieldset>
 
           <fieldset class='form-group'>
-          <input type="submit" class="btn btn-primary" value="Submit Post">
+          <input type="submit" class="btn btn-primary" value="Submit Post" ng-click='showme = false'>
           </fieldset>
         </form>
 
@@ -90,7 +90,7 @@
               <img class="pic" ng-src="{{entry.imgUrl}}">
             </div>
             <div class="col-md-9">
-              <h3>{{entry.title}} | <a><span class='glyphicon glyphicon-chevron-up'></span></a> <a><span class='glyphicon glyphicon-chevron-down'></span></a>| {{entry.votes}}</h3>
+              <h3>{{entry.title}} | <a ng-controller='UpDownVotes as voteCtrl' ng-submit='voteCtrl.upVote(votes)'><span class='glyphicon glyphicon-chevron-up'></span></a> <a><span class='glyphicon glyphicon-chevron-down'></span></a> {{entry.votes}}</h3>
               <p>By {{entry.author}}</p>
               <p>{{entry.description}}</p>
               <p>{{entry.createdOn | date:"MM/dd/yyyy 'at' h:mma"}} | <a ng-click="showmecomments = true">{{entry.commentsCount}} comments </a>| <a href="#">Add Comment</a></p>
