@@ -93,42 +93,45 @@
               <h3>{{entry.title}} | <span ng-click = '$scope.votes+1' class='glyphicon glyphicon-chevron-up'></span> <span ng-click = "$scope.votes=$scope.votes-1"class='glyphicon glyphicon-chevron-down'></span> {{entry.votes}}</h3>
               <p>By {{entry.author}}</p>
               <p>{{entry.description}}</p>
-              <p>{{entry.createdOn | date:"MM/dd/yyyy 'at' h:mma"}} | <a ng-click="showmecomments = true">{{entry.commentsCount}} comments </a>| <a ng-show='showmecommform = true'>Add Comment</a></p>
+              <p>{{entry.createdOn | date:"MM/dd/yyyy 'at' h:mma"}} | <a ng-click="showmecomments = true">{{entry.commentsCount}} comments </a>| <a ng-click='showmecommform = true'>Add Comment</a></p>
 
                 <!-- SHOWS COMMENTS -->
                 <div ng-show='showmecomments' class="viewcomments">
                   <p ng-repeat='comment in entry.comments'>{{comment.commentAuthor}} | {{comment.body}}</p>
                 </div>
             </div>
+
+            <!-- SHOWS COMMENT FORM -->
+
+        <div class="container"  ng-controller='CommentController as commentCtrl'>
+        <div class="row">
+        <div ng-show="showmecommform">
+
+          <!-- COMMENT FORM -->
+          <form name='commentForm' ng-controller='CommentController as commentCtrl' ng-submit='commentForm.$valid && commentCtrl.addComment()' ng-show="showmecommform" novalidate>
+            <fieldset class="form-group">
+              <label for="author">Author</label>
+              <input type="text" class="form-control" placeholder="Name" title="Author" ng-model='commentCtrl.newComment.author' required>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label for="comment">Author</label>
+              <input type="text" class="form-control" placeholder="Enter Comment Here" title="Comment" ng-model='commentCtrl.newComment.comment' required>
+            </fieldset>
+
+            <fieldset class='form-group'>
+            <input type="submit" class="btn btn-primary" value="Submit Comment" ng-click='showmecommform = false'>
+            </fieldset>
+          </form>
+
+        </div> <!--div.showmecommform-->
+        </div> <!--div.row-->
+
           </div>
         </div>
       </div>
 
-              <!-- SHOWS COMMENT FORM -->
 
-  <div class="container"  ng-controller='CommentController as commentCtrl'>
-        <div class="row">
-          <div ng-show="showmecommform">
-
-            <!-- COMMENT FORM -->
-            <form name='commentForm' ng-controller='CommentController as commentCtrl' ng-submit='commentForm.$valid && commentCtrl.addComment()' ng-show='showmecommform' novalidate>
-              <fieldset class="form-group">
-                <label for="author">Author</label>
-                <input type="text" class="form-control" placeholder="Name" title="Author" ng-model='commentCtrl.newComment.author' required>
-              </fieldset>
-
-              <fieldset class="form-group">
-                <label for="comment">Author</label>
-                <input type="text" class="form-control" placeholder="Enter Comment Here" title="Comment" ng-model='commentCtrl.newComment.comment' required>
-              </fieldset>
-
-              <fieldset class='form-group'>
-              <input type="submit" class="btn btn-primary" value="Submit Comment" ng-click='showmecommform = false'>
-              </fieldset>
-            </form>
-
-          </div> <!--div.showmecommform-->
-        </div> <!--div.row-->
 
 
     </div>
