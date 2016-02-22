@@ -1,55 +1,30 @@
 (function(){
   var app = angular.module('clone', []);
 
-
   app.controller('CloneController', function(){
     this.entries = testData;
   });
 
-  app.controller('PostController', function(){
+  app.controller('PostController', function($scope){
       this.newPost = {};
-
       this.addPost = function(){
         this.newPost.createdOn = Date.now();
         testData.push(this.newPost);
         this.newPost = {};
+      }
+    });
+
+  app.controller('CommentController', function($scope){
+      this.newComment = {};
+      this.addComment = function(){
+        this.newComment.createdOn = Date.now();
+        comments.push(this.newComment);
+        this.newComment = {};
       };
   });
 
-  app.controller("UpDownVotes", function() {
-    for (var i = 0; i < testData.length; i++) {
-      for (var votes in testData){
-        if (testData.hasOwnProperty(votes)) {
-           console.log("Key is " + votes + ", value is" + testData[votes]);
-         }
-      }
-    }
-  });
 
 
-    // this.votes = testData.votes
-    // $scope.upVote = function() {
-    //   $scope.upVotes++
-    // };
-    //
-    // $scope.downVote = function() {
-    //   $scope.downVotes--
-    // };
-
-
-
-  // app.controller("UpDownVotes", function($scope) {
-  //   $scope.upVotes = 0;
-  //   $scope.downVotes = 0;
-  //
-  //   $scope.upVote = function() {
-  //     $scope.upVotes++
-  //   }
-  //
-  //   $scope.downVote = function() {
-  //     $scope.downVotes--
-  //   }
-  // });
 
 
   var testData = [
