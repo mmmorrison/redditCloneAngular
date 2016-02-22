@@ -1,33 +1,24 @@
 (function(){
   var app = angular.module('clone', []);
 
-  app.controller('CloneController', function(){
-    this.entries = testData;
-  });
+  app.controller('CloneController', function($scope){
 
-  app.controller('PostController', function($scope){
-      this.newPost = {};
-      this.addPost = function(){
-        this.newPost.createdOn = Date.now();
-        testData.push(this.newPost);
-        this.newPost = {};
-      }
-    });
-
-  app.controller('CommentController', function($scope){
-      this.newComment = {};
-      this.addComment = function(){
-        this.newComment.createdOn = Date.now();
-        comments.push(this.newComment);
-        this.newComment = {};
+      $scope.addPost = function(){
+        newPost = {};
+        newPost.title = $scope.title;
+        newPost.author = $scope.author;
+        newPost.imgUrl = $scope.imgUrl;
+        newPost.description = $scope.description;
+        newPost.createdOn = Date.now();
+        $scope.AllPosts.push(newPost);
       };
-  });
+
+      $scope.addComment = function(post, name, body){
+        post.comments.push({name:name, body:body});
+      };
 
 
-
-
-
-  var testData = [
+  $scope.AllPosts = [
     {
     imgUrl: 'http://vignette3.wikia.nocookie.net/bleedmancomics/images/8/8c/Girtrans.png/revision/latest?cb=20121012154620',
     title: 'Test Title',
@@ -38,7 +29,7 @@
     commentsCount: 1,
     comments: [
       {
-        commentAuthor: 'John Doe',
+        name: 'John Doe',
         body: 'Lorem ipsum dolor sit amet, consectetur'
       },
     ],
@@ -55,15 +46,16 @@
     commentsCount: 2,
     comments: [
       {
-        commentAuthor: 'Abbie Hoffman',
+        name: 'Abbie Hoffman',
         body: 'Lorem ipsum dolor sit amet, consectetur'
       },
       {
-        commentAuthor: 'Buddy Rich',
+        name: 'Buddy Rich',
         body: 'Lorem ipsum dolor sit amet, consectetur'
       },
     ],
 
     },
   ]
+    });
 })();
