@@ -87,7 +87,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="jumbotron container-fluid" ng-repeat='post in AllPosts'>
+        <div class="jumbotron container-fluid" ng-repeat='post in AllPosts | filter:searchable | orderBy: sort.field'>
           <div class="col-md-3 pic">
             <img class="pic" ng-src="{{post.imgUrl}}">
           </div>
@@ -95,7 +95,11 @@
             <h3>{{post.title}} | <span ng-click ='post.votes=post.votes+1' class='glyphicon glyphicon-chevron-up'></span> <span ng-click = "post.votes=post.votes-1" class='glyphicon glyphicon-chevron-down'></span> {{post.votes}}</h3>
             <p>By {{post.author}}</p>
             <p>{{post.description}}</p>
-            <p>{{post.createdOn | date:"MM/dd/yyyy 'at' h:mma"}} | <a ng-click="showmecomments = true">{{post.commentsCount}} comments </a>| <a ng-click='showmecommform = true'>Add Comment</a></p>
+            <p>{{post.createdOn | date:"MM/dd/yyyy 'at' h:mma"}} | <a ng-click="showmecomments = true">{{post.commentsCount}}   <ng-pluralize count="post.commentsCount"
+                          when="{1: ' comment',
+                          'other': ' comments'}">
+             </ng-pluralize> </a>| <a ng-click='showmecommform = true'>Add Comment</a></p>
+
 
             <!-- SHOWS COMMENTS -->
             <div ng-show='showmecomments' class="viewcomments">
