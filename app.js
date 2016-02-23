@@ -8,14 +8,28 @@
         newPost.title = $scope.title;
         newPost.author = $scope.author;
         newPost.imgUrl = $scope.imgUrl;
+        newPost.comments = [];
+        newPost.commentsCount = 0;
         newPost.description = $scope.description;
         newPost.createdOn = Date.now();
         $scope.AllPosts.push(newPost);
+        $scope.title = null;
+        $scope.author = null;
+        $scope.imgUrl = null;
+        $scope.description = null;
       };
 
-      $scope.addComment = function(post, name, body){
-        post.comments.push({name:name, body:body});
+      $scope.addComment = function(x){
+        newComment = {};
+        newComment.name = x.name;
+        newComment.body = x.body;
+        x.post.comments.push(newComment);
+        x.post.commentsCount++;
+        x.name = null;
+        x.body = null;
       };
+
+
 
 
   $scope.AllPosts = [

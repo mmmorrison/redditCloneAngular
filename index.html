@@ -92,7 +92,7 @@
             <img class="pic" ng-src="{{post.imgUrl}}">
           </div>
           <div class="col-md-9">
-            <h3>{{post.title}} | <span ng-click = 'posts.votes+1' class='glyphicon glyphicon-chevron-up'></span> <span ng-click = "post.votes=post.votes-1"class='glyphicon glyphicon-chevron-down'></span> {{post.votes}}</h3>
+            <h3>{{post.title}} | <span ng-click ='post.votes=post.votes+1' class='glyphicon glyphicon-chevron-up'></span> <span ng-click = "post.votes=post.votes-1" class='glyphicon glyphicon-chevron-down'></span> {{post.votes}}</h3>
             <p>By {{post.author}}</p>
             <p>{{post.description}}</p>
             <p>{{post.createdOn | date:"MM/dd/yyyy 'at' h:mma"}} | <a ng-click="showmecomments = true">{{post.commentsCount}} comments </a>| <a ng-click='showmecommform = true'>Add Comment</a></p>
@@ -102,7 +102,7 @@
               <p ng-repeat='comment in post.comments'>{{comment.name}} | {{comment.body}}</p>
             </div>
           </div>
-
+          <div class="container buffer"></div>
           <!-- SHOWS COMMENT FORM -->
 
           <div class="container">
@@ -110,7 +110,7 @@
               <div ng-show="showmecommform">
 
                 <!-- COMMENT FORM -->
-                <form name='commentForm' ng-submit='commentForm.$valid && addComment(post, name, body)' ng-show="showmecommform" novalidate>
+                <form name='commentForm' ng-submit='commentForm.$valid && addComment(this)' ng-show="showmecommform" novalidate>
 
                   <fieldset class="form-group">
                     <label for="author">Name</label>
@@ -126,21 +126,13 @@
                     <input type="submit" class="btn btn-primary" value="Submit Comment" ng-click='showmecommform = false'>
                   </fieldset>
                 </form>
-
-              </div>
-              <!--div.showmecommform-->
-            </div>
-            <!--div.row-->
+              </div> <!--div.showmecommform-->
+            </div> <!--div.row-->
 
           </div>
         </div>
       </div>
-
-
-
-
     </div>
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js'></script>
