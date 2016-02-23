@@ -1,8 +1,10 @@
 (function(){
-  var app = angular.module('clone', ["ngAnimate"]);
-  // $scope.sort = [{Sort By Votes}, {Sort By Date}, {Sort By Title}];
+  var app = angular.module('clone', ["ngAnimate", "angularMoment"]);
 
   app.controller('CloneController', function($scope){
+    $scope.selections=[{field: "votes", descend: true}, {field: "date", descend: true}, {field: "title", descend: false}];
+    $scope.selected = $scope.selections[0]
+
     $scope.addPost = function(){
       newPost = {};
       newPost.title = $scope.title;
@@ -80,11 +82,11 @@
     commentsCount: 3,
     comments: [
       {
-        name: 'Abbie Hoffman',
+        name: 'Debbie Downer',
         body: 'Lorem ipsum dolor sit amet, consectetur'
       },
       {
-        name: 'Buddy Rich',
+        name: 'Eric Everly',
         body: 'Lorem ipsum dolor sit amet, consectetur'
       },
       {
